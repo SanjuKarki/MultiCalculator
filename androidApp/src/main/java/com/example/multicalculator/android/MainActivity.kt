@@ -1,5 +1,6 @@
 package com.example.multicalculator.android
 
+import android.media.VolumeShaper.Operation
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -57,13 +58,23 @@ fun CalcDisplay() {
 }
 
 @Composable
-fun CalcOperationButton() {
+fun CalcOperationButton(operation: String, display: MutableState<String>) {
+ Button(onClick = { /*TODO*/ }, Modifier.padding(4.dp)) {
+  Text(text = "")
+ }
 
 }
 
 @Composable
+fun CalcNumericButton(number: Int, display: MutableState<String>) {
+    Button(onClick = { display.value = "0" }, Modifier.padding(4.dp)) {
+        Text(text = "=")
+    }
+}
+
+@Composable
 fun CalcEqualsButton(display: MutableState<String>) {
-    Button(onClick = { /*TODO*/ }, Modifier.padding(4.dp)) {
-        
+    Button(onClick = { display.value = "0" }, Modifier.padding(4.dp)) {
+    Text(text = "=")
     }
 }
