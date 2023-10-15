@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.multicalculator.Greeting
 
 class MainActivity : ComponentActivity() {
@@ -52,45 +53,45 @@ fun DefaultPreview() {
 }
 
 @Composable
-fun CalcView() {
-val displayText = remember {mutableStateOf("0")}
-    Column(Modifier.background(color = Color.LightGray)){
-        Row(){
+fun CalcView(){
+    val displayText = remember {mutableStateOf("0")}
+    Column(modifier = Modifier.background(Color.LightGray) then  Modifier.padding(0.dp)) {
+        Row {
             CalcDisplay(displayText)
         }
-        Row(){
-            Column(){
-                for (i in 7 downTo 1 step 3){
-                    CalcNumericButton(number = 0, display = displayText)
+        Row {
+            Column {
+                for (i in 7 downTo 1 step 3) CalcRow(display = displayText, startNum = i, numButtons = 3)
+                Row {
+                    CalcNumericButton(number = 0, display =displayText )
+                    CalcEqualsButton(display = displayText)
                 }
             }
-            Column(){
-                CalcOperationButton(operation = "+", display = displayText)
-                CalcOperationButton(operation = "-", display = displayText)
-                CalcOperationButton(operation = "x", display = displayText)
-                CalcOperationButton(operation = "/", display = displayText)
-
+            Column {
+                CalcOperationButton(operation = "+", display = displayText  )
+                CalcOperationButton(operation = "-", display = displayText  )
+                CalcOperationButton(operation = "*", display = displayText  )
+                CalcOperationButton(operation = "/", display = displayText  )
             }
         }
     }
 }
 @Composable
-fun CalcRow(display: MutableState<String>, startNum: Int, numButtons: Int) {
- val endNum = startNum + numButtons
-    Row(Modifier.padding(0.dp)){
-        for (i in startNum downTo endNum) {
+fun CalcRow(display: MutableState<String>, startNum : Int, numButtons : Int){
+    val endNum = startNum + numButtons
+    Row (modifier = Modifier.padding(0.dp)){
+        for (i in startNum until endNum){
             CalcNumericButton(number = i, display = display)
         }
     }
 }
 
 @Composable
-fun CalcDisplay(display: MutableState<String>) {
-Text(text = display.value,
-    Modifier
-        .height(50.dp)
-        .padding(5.dp)
-        .fillMaxWidth())
+fun CalcDisplay(display: MutableState<String>){
+    Text(text = display.value, modifier = Modifier
+        .height(400.dp)
+        .fillMaxWidth()
+        .padding(9.dp) , fontSize = 100.sp)
 }
 
 @Composable
