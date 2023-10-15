@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -18,6 +19,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -95,17 +97,25 @@ fun CalcDisplay(display: MutableState<String>){
 }
 
 @Composable
-fun CalcOperationButton(operation: String, display: MutableState<String>) {
- Button(onClick = { /*TODO*/ }, Modifier.padding(4.dp)) {
-  Text(text = "")
- }
-
+fun CalcNumericButton(number : Int , display: MutableState<String>){
+    Button(onClick = {
+        display.value += number.toString()
+    }, modifier = Modifier
+        .padding(4.dp)
+        .size(95.dp) , colors = ButtonDefaults.buttonColors(backgroundColor = Color.Unspecified),  )
+    {
+        Text(text = number.toString() , fontSize = 30.sp , fontWeight = FontWeight.Bold)
+    }
 }
 
 @Composable
-fun CalcNumericButton(number: Int, display: MutableState<String>) {
-    Button(onClick = {display.value += number.toString()}, Modifier.padding(4.dp)) {
-        Text(text = number.toString())
+fun CalcOperationButton(operation : String , display: MutableState<String>){
+    Button(onClick = { /*TODO*/ },
+        modifier = Modifier
+            .padding(4.dp)
+            .size(95.dp),colors = ButtonDefaults.buttonColors(backgroundColor = Color.Unspecified)
+    ) {
+        Text(text = operation , fontSize = 30.sp , fontWeight = FontWeight.Bold)
     }
 }
 
