@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    GreetingView(Greeting().greet())
+                    CalcView()
                 }
             }
         }
@@ -50,14 +50,14 @@ fun GreetingView(text: String) {
 @Composable
 fun DefaultPreview() {
     MyApplicationTheme {
-        GreetingView("Hello, Android!")
+        CalcView()
     }
 }
 
 @Composable
 fun CalcView(){
     val displayText = remember {mutableStateOf("0")}
-    Column(modifier = Modifier.background(Color.LightGray) then  Modifier.padding(0.dp)) {
+    Column(modifier = Modifier.background(Color.Transparent) then  Modifier.padding(0.dp)) {
         Row {
             CalcDisplay(displayText)
         }
@@ -102,7 +102,7 @@ fun CalcNumericButton(number : Int , display: MutableState<String>){
         display.value += number.toString()
     }, modifier = Modifier
         .padding(4.dp)
-        .size(95.dp) , colors = ButtonDefaults.buttonColors(backgroundColor = Color.Unspecified),  )
+        .size(95.dp) , colors = ButtonDefaults.buttonColors(backgroundColor = Color.Magenta),  )
     {
         Text(text = number.toString() , fontSize = 30.sp , fontWeight = FontWeight.Bold)
     }
@@ -113,15 +113,17 @@ fun CalcOperationButton(operation : String , display: MutableState<String>){
     Button(onClick = { /*TODO*/ },
         modifier = Modifier
             .padding(4.dp)
-            .size(95.dp),colors = ButtonDefaults.buttonColors(backgroundColor = Color.Unspecified)
+            .size(95.dp),colors = ButtonDefaults.buttonColors(backgroundColor = Color.Magenta)
     ) {
         Text(text = operation , fontSize = 30.sp , fontWeight = FontWeight.Bold)
     }
 }
 
 @Composable
-fun CalcEqualsButton(display: MutableState<String>) {
-    Button(onClick = { display.value = "0" }, Modifier.padding(4.dp)) {
-    Text(text = "=")
+fun CalcEqualsButton(display : MutableState<String>){
+    Button(modifier = Modifier
+        .padding(4.dp)
+        .size(95.dp),onClick = {display.value = "0"} , colors = ButtonDefaults.buttonColors(backgroundColor = Color.Magenta)) {
+        Text(text = "=" ,  fontSize = 30.sp , fontWeight = FontWeight.Bold)
     }
 }
