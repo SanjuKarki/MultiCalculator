@@ -60,9 +60,15 @@ val displayText = remember {mutableStateOf("0")}
         }
         Row(){
             Column(){
-
+                for (i in 7 downTo 1 step 3){
+                    CalcNumericButton(number = 0, display = displayText)
+                }
             }
             Column(){
+                CalcOperationButton(operation = "+", display = displayText)
+                CalcOperationButton(operation = "-", display = displayText)
+                CalcOperationButton(operation = "x", display = displayText)
+                CalcOperationButton(operation = "/", display = displayText)
 
             }
         }
