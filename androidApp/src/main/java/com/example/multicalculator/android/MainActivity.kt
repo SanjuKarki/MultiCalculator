@@ -167,7 +167,7 @@ fun CalcOperationButton(operation : String , onPress : (operation : String)-> Un
 }
 
 @Composable
-fun CalcEqualsButton(display : MutableState<String>){
+fun CalcEqualsButton(onPress : ()-> Unit){
     Button(modifier = Modifier
         .padding(4.dp)
         .size(95.dp),onClick = {onPress()} , colors = ButtonDefaults.buttonColors(backgroundColor = Color.Unspecified) ) {
