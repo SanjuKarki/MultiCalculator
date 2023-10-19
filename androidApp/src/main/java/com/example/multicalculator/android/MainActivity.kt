@@ -170,7 +170,7 @@ fun CalcOperationButton(operation : String , onPress : (operation : String)-> Un
 fun CalcEqualsButton(display : MutableState<String>){
     Button(modifier = Modifier
         .padding(4.dp)
-        .size(95.dp),onClick = {display.value = "0"} , colors = ButtonDefaults.buttonColors(backgroundColor = Color.Magenta)) {
+        .size(95.dp),onClick = {onPress()} , colors = ButtonDefaults.buttonColors(backgroundColor = Color.Unspecified) ) {
         Text(text = "=" ,  fontSize = 30.sp , fontWeight = FontWeight.Bold)
     }
 }
