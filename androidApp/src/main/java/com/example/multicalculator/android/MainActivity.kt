@@ -130,7 +130,7 @@ fun CalcRow(onPress: (number: Int) -> Unit, startNum : Int, numButtons : Int){
     val endNum = startNum + numButtons
     Row (modifier = Modifier.padding(0.dp)){
         for (i in startNum until endNum){
-            CalcNumericButton(number = i, display = display)
+            CalcNumericButton(number = i, onPress= onPress)
         }
     }
 }
@@ -146,10 +146,10 @@ fun CalcDisplay(display: MutableState<String>){
 @Composable
 fun CalcNumericButton(number : Int , onPress: (number : Int) -> Unit){
     Button(onClick = {
-        display.value += number.toString()
+        onPress(number)
     }, modifier = Modifier
         .padding(4.dp)
-        .size(95.dp) , colors = ButtonDefaults.buttonColors(backgroundColor = Color.Magenta),  )
+        .size(95.dp) , colors = ButtonDefaults.buttonColors(backgroundColor = Color.Unspecified), shape = RoundedCornerShape(10.dp) )
     {
         Text(text = number.toString() , fontSize = 30.sp , fontWeight = FontWeight.Bold)
     }
