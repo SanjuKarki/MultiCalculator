@@ -18,7 +18,6 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.multicalculator.Greeting
 import androidx.compose.runtime.MutableState
 import androidx.compose.material.Button
 import androidx.compose.runtime.getValue
@@ -104,7 +103,7 @@ fun CalcView(){
     fun equalsPress(){
         complete = true
     }
-    Column(modifier = Modifier.background(Color.LightGray) then  Modifier.padding(0.dp)) {
+    Column(modifier = Modifier.background(Color.Gray) then  Modifier.padding(0.dp)) {
         Row {
             CalcDisplay(displayText)
         }
@@ -149,9 +148,9 @@ fun CalcNumericButton(number : Int , onPress: (number : Int) -> Unit){
         onPress(number)
     }, modifier = Modifier
         .padding(4.dp)
-        .size(95.dp) , colors = ButtonDefaults.buttonColors(backgroundColor = Color.Unspecified), shape = RoundedCornerShape(10.dp) )
+        .size(95.dp) , colors = ButtonDefaults.buttonColors(backgroundColor = Color.Blue), shape = RoundedCornerShape(10.dp) )
     {
-        Text(text = number.toString() , fontSize = 30.sp , fontWeight = FontWeight.Bold)
+        Text(text = number.toString() , color = Color.White, fontSize = 30.sp , fontWeight = FontWeight.Bold )
     }
 }
 
@@ -160,9 +159,9 @@ fun CalcOperationButton(operation : String , onPress : (operation : String)-> Un
     Button(onClick = { onPress(operation)},
         modifier = Modifier
             .padding(4.dp)
-            .size(95.dp),colors = ButtonDefaults.buttonColors(backgroundColor = Color.Unspecified), shape = RoundedCornerShape(10.dp)
+            .size(95.dp),colors = ButtonDefaults.buttonColors(backgroundColor = Color.Blue), shape = RoundedCornerShape(10.dp)
     ) {
-        Text(text = operation , fontSize = 30.sp , fontWeight = FontWeight.Bold)
+        Text(text = operation, color = Color.White , fontSize = 30.sp , fontWeight = FontWeight.Bold)
     }
 }
 
@@ -170,7 +169,7 @@ fun CalcOperationButton(operation : String , onPress : (operation : String)-> Un
 fun CalcEqualsButton(onPress : ()-> Unit){
     Button(modifier = Modifier
         .padding(4.dp)
-        .size(95.dp),onClick = {onPress()} , colors = ButtonDefaults.buttonColors(backgroundColor = Color.Unspecified) ) {
-        Text(text = "=" ,  fontSize = 30.sp , fontWeight = FontWeight.Bold)
+        .size(95.dp),onClick = {onPress()} , colors = ButtonDefaults.buttonColors(backgroundColor = Color.Blue) ) {
+        Text(text = "=" , color = Color.White ,  fontSize = 30.sp , fontWeight = FontWeight.Bold)
     }
 }
