@@ -157,10 +157,10 @@ fun CalcNumericButton(number : Int , onPress: (number : Int) -> Unit){
 
 @Composable
 fun CalcOperationButton(operation : String , onPress : (operation : String)-> Unit){
-    Button(onClick = { /*TODO*/ },
+    Button(onClick = { onPress(operation)},
         modifier = Modifier
             .padding(4.dp)
-            .size(95.dp),colors = ButtonDefaults.buttonColors(backgroundColor = Color.Magenta)
+            .size(95.dp),colors = ButtonDefaults.buttonColors(backgroundColor = Color.Unspecified), shape = RoundedCornerShape(10.dp)
     ) {
         Text(text = operation , fontSize = 30.sp , fontWeight = FontWeight.Bold)
     }
